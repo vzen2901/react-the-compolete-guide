@@ -6,7 +6,6 @@ const Person = (props) => {
             <p>i am {props.name}, age {props.age}</p>
             <p>{props.children}</p>
         </div>
-
     );
 }
 export default Person;
