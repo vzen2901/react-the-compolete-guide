@@ -4,7 +4,7 @@ import Person from './Person/Person';
 
 import { useState } from 'react';
 
-const App = () => {
+const App = (props) => {
   const [personState, setPpersonState] = useState({
     persons : [
             {name: 'han', age: 10},
@@ -47,7 +47,7 @@ export default App;
 //   state = {
 //     persons : [
 //       {name: 'han', age: 10},
-//       {name: 'hanh', age: 11},
+//       {name: 'hanh', age: 11}-77,
 //       {name: 'don', age: 12},
 //       {name: 'chao', age: 13}
 //     ]
