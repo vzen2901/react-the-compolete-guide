@@ -60,6 +60,19 @@ class App extends Component {
       ]
     })
   }
+
+  nameChange = (event) =>{
+    this.setState({
+      persons : [
+        {name: 'han', age: 30},
+        {name: event.target.value, age: 31},
+        {name: 'don', age: 32},
+        {name: 'chao', age: 33}
+      ]
+    })
+  }
+
+
   render(){
     return (
       <div className="App">
@@ -67,7 +80,7 @@ class App extends Component {
         </header>
         <h1>hi, i'm a react app</h1>
         <Person name = {this.state.persons[0].name} age = {this.state.persons[0].age} switchNameAge = {this.switchNameAge.bind(this, 'newhan')}>Click</Person>
-        <Person name = {this.state.persons[1].name} age = {this.state.persons[1].age}></Person>
+        <Person name = {this.state.persons[1].name} age = {this.state.persons[1].age} nameChange={this.nameChange}></Person>
         <Person name = {this.state.persons[2].name} age = {this.state.persons[2].age}></Person>
         <Person name = {this.state.persons[3].name} age = {this.state.persons[3].age}></Person>
         <button onClick={this.switchNameAge.bind(this, 'han')}>submit</button>
@@ -101,3 +114,4 @@ export default App;
 //     return React.createElement('div', {className: App}, React.createElement('h1',null,'i am react app'));
 //   }
 // }
+
