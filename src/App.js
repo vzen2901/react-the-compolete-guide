@@ -1,6 +1,9 @@
 import React from 'react';
 import './App.css';
+
 import Person from './Person/Person';
+import UserInput from './UserInput/UserInput';
+import UserOutput from './UserOutput/UserOutput';
 
 
 // import { useState } from 'react';
@@ -48,7 +51,8 @@ class App extends Component {
       {name: 'hanh', age: 11},
       {name: 'don', age: 12},
       {name: 'chao', age: 13}
-    ]
+    ],
+    username: 'supermax'
   }
   switchNameAge = (newname) => {
     this.setState({
@@ -71,20 +75,28 @@ class App extends Component {
       ]
     })
   }
+  usernameChange = (event) => {
+    this.setState({
+      username: event.target.value
+    })
+  }
+
+
 
 
   render(){
     return (
       <div className="App">
-        <header className="App-header">
-        </header>
-        <h1>hi, i'm a react app</h1>
+
         <Person name = {this.state.persons[0].name} age = {this.state.persons[0].age} switchNameAge = {this.switchNameAge.bind(this, 'newhan')}>Click</Person>
         <Person name = {this.state.persons[1].name} age = {this.state.persons[1].age} nameChange={this.nameChange}></Person>
-        <Person name = {this.state.persons[2].name} age = {this.state.persons[2].age}></Person>
-        <Person name = {this.state.persons[3].name} age = {this.state.persons[3].age}></Person>
         <button onClick={this.switchNameAge.bind(this, 'han')}>submit</button>
 
+        <UserOutput userName = {this.state.username} />
+        <UserInput userName = {this.usernameChange}/>
+        <UserOutput userName = "hanh" />
+        <UserOutput userName = "don" />
+        <UserOutput userName = "chao" />
       </div>
     );
   }
