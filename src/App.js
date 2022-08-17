@@ -84,8 +84,12 @@ class App extends Component {
   }
 
   deletePersonsHandler = (personIndex) => {
-    const persons = this.state.persons;
+    // const persons = this.state.persons;
+    // không nên gán trực tiếp hai đối tượng, nên bản sao của chúng
+    // const persons = this.state.persons.slice();
+    const persons = [...this.state.persons];
     persons.splice(personIndex,1);
+    
     this.setState({
       persons: persons
     })
