@@ -45,6 +45,7 @@ import UserOutput from './UserOutput/UserOutput';
 
 import {Component} from 'react'
 class App extends Component {
+  // tìm nạp dữ liệu tư máy chủ
   state = {
     persons : [
       {name: 'han', age: 10},
@@ -55,16 +56,16 @@ class App extends Component {
     username: 'supermax',
     showPerson: false
   }
-  switchNameAge = (newname) => {
-    this.setState({
-      persons : [
-        {name: newname, age: 20},
-        {name: 'hanh', age: 21},
-        {name: 'don', age: 22},
-        {name: 'chao', age: 23}
-      ]
-    })
-  }
+  // switchNameAge = (newname) => {
+  //   this.setState({
+  //     persons : [
+  //       {name: newname, age: 20},
+  //       {name: 'hanh', age: 21},
+  //       {name: 'don', age: 22},
+  //       {name: 'chao', age: 23}
+  //     ]
+  //   })
+  // }
 
   nameChange = (event) =>{
     this.setState({
@@ -82,12 +83,19 @@ class App extends Component {
     })
   }
 
-togglePersonsHandler = () => {
-  const doesShow = this.state.showPerson;
-  this.setState({
-    showPerson: !doesShow
-  })
-}
+  deletePersonsHandler = (personIndex) => {
+    const persons = this.state.persons;
+    persons.splice(personIndex,1);
+    this.setState({
+      persons: persons
+    })
+  }
+  togglePersonsHandler = () => {
+    const doesShow = this.state.showPerson;
+    this.setState({
+      showPerson: !doesShow
+    })
+  }
 
 
   render(){
@@ -101,15 +109,25 @@ togglePersonsHandler = () => {
 
     let persons = null;
     if(this.state.showPerson){
-      persons = (
-      <div>{/* ẩn hiện div này */}
-        <Person name = {this.state.persons[0].name} age = {this.state.persons[0].age} switchNameAge = {this.switchNameAge.bind(this, 'newhan')}>Click</Person>
-        <Person name = {this.state.persons[1].name} age = {this.state.persons[1].age} nameChange={this.nameChange}></Person>
-      </div>);
+      persons = this.state.persons.map((person, index) => (
+        <Person name={person.name} 
+                age={person.age} 
+                click={() => this.deletePersonsHandler(index)}
+        />
+      ));
+      // <div>{/* ẩn hiện div này */}
+      //   <Person name = {this.state.persons[0].name} age = {this.state.persons[0].age} switchNameAge = {this.switchNameAge.bind(this, 'newhan')}>Click</Person>
+      //   <Person name = {this.state.persons[1].name} age = {this.state.persons[1].age} nameChange={this.nameChange}></Person>
+      // </div>);
     }
 
     return (
       <div className="App">
+        <button 
+          // onClick={this.switchNameAge.bind(this, 'han')}
+          onClick = {this.togglePersonsHandler}
+          style={style}
+        >Toggle Persons</button>
         {/* {this.state.showPerson ?  */}
         {/* <div>{/* ẩn hiện div này */}
           {/* <Person name = {this.state.persons[0].name} age = {this.state.persons[0].age} switchNameAge = {this.switchNameAge.bind(this, 'newhan')}>Click</Person> */}
@@ -117,12 +135,7 @@ togglePersonsHandler = () => {
         {/* </div> */}
         {/* : null */}
         {persons}
-        <button 
-          // onClick={this.switchNameAge.bind(this, 'han')}
-          onClick = {this.togglePersonsHandler}
-          style={style}
-        >submit</button>
-
+        
         <UserOutput userName = {this.state.username} />
         <UserInput userName = {this.usernameChange}/>
         <UserOutput userName = "hanh" />
