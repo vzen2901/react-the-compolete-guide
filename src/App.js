@@ -48,10 +48,10 @@ class App extends Component {
   // tìm nạp dữ liệu tư máy chủ
   state = {
     persons : [
-      {name: 'han', age: 10},
-      {name: 'hanh', age: 11},
-      {name: 'don', age: 12},
-      {name: 'chao', age: 13}
+      {id: '1', name: 'han', age: 10},
+      {id: '12', name: 'hanh', age: 11},
+      {id: '123', name: 'don', age: 12},
+      {id: '1234', name: 'chao', age: 13}
     ],
     username: 'supermax',
     showPerson: false
@@ -67,14 +67,16 @@ class App extends Component {
   //   })
   // }
 
-  nameChange = (event) =>{
+  nameChange = (event, id) =>{
+    const personIndex = this.state.persons.findIndex((tmp) => {return tmp.id === id});
+    const person = {...this.state.persons[personIndex]}
+    // const person = Object.assign({}, this.state.persons[personIndex])
+    person.name = event.target.value;
+    const persons = [...this.state.persons];
+    persons[personIndex] = person;
+
     this.setState({
-      persons : [
-        {name: 'han', age: 30},
-        {name: event.target.value, age: 31},
-        {name: 'don', age: 32},
-        {name: 'chao', age: 33}
-      ]
+      persons : persons
     })
   }
   usernameChange = (event) => {
@@ -117,6 +119,8 @@ class App extends Component {
         <Person name={person.name} 
                 age={person.age} 
                 click={() => this.deletePersonsHandler(index)}
+                key={person.id}
+                nameChange = {(event)=>this.nameChange(event, person.id)}
         />
       ));
       // <div>{/* ẩn hiện div này */}
