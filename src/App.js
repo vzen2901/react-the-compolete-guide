@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 
+import Radium from 'radium';
 import Person from './Person/Person';
 // import UserInput from './UserInput/UserInput';
 // import UserOutput from './UserOutput/UserOutput';
@@ -114,7 +115,11 @@ class App extends Component {
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      }
     }
 
     let persons = null;
@@ -132,6 +137,10 @@ class App extends Component {
       //   <Person name = {this.state.persons[1].name} age = {this.state.persons[1].age} nameChange={this.nameChange}></Person>
       // </div>);
       style.backgroundColor = 'red';
+      style[':hover'] = {
+        backgroundColor: 'lightred',
+        color: 'white'
+      };
     }
 
     // let classes = ['red', 'bold'].join(' ');
@@ -171,7 +180,7 @@ class App extends Component {
 }
 
 
-export default App;
+export default Radium(App);
 
 
 
