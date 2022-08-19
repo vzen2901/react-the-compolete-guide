@@ -146,7 +146,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <p className={classes}>This is really working!</p>
+        <p className={classes.join(' ')}>This is really working!</p>
         <button 
           // onClick={this.switchNameAge.bind(this, 'han')}
           onClick = {this.togglePersonsHandler}
