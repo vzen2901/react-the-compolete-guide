@@ -131,6 +131,7 @@ class App extends Component {
       //   <Person name = {this.state.persons[0].name} age = {this.state.persons[0].age} switchNameAge = {this.switchNameAge.bind(this, 'newhan')}>Click</Person>
       //   <Person name = {this.state.persons[1].name} age = {this.state.persons[1].age} nameChange={this.nameChange}></Person>
       // </div>);
+      style.backgroundColor = 'read';
     }
 
     return (
