@@ -2,8 +2,8 @@ import React from 'react';
 import './App.css';
 
 import Person from './Person/Person';
-import UserInput from './UserInput/UserInput';
-import UserOutput from './UserOutput/UserOutput';
+// import UserInput from './UserInput/UserInput';
+// import UserOutput from './UserOutput/UserOutput';
 
 
 // import { useState } from 'react';
@@ -131,11 +131,15 @@ class App extends Component {
       //   <Person name = {this.state.persons[0].name} age = {this.state.persons[0].age} switchNameAge = {this.switchNameAge.bind(this, 'newhan')}>Click</Person>
       //   <Person name = {this.state.persons[1].name} age = {this.state.persons[1].age} nameChange={this.nameChange}></Person>
       // </div>);
-      style.backgroundColor = 'read';
+      style.backgroundColor = 'red';
     }
+
+    let classes = ['red', 'bold'].join(' ');
+
 
     return (
       <div className="App">
+        <p className={classes}>This is really working!</p>
         <button 
           // onClick={this.switchNameAge.bind(this, 'han')}
           onClick = {this.togglePersonsHandler}
