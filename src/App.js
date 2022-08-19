@@ -148,11 +148,11 @@ class App extends Component {
         {/* : null */}
         {persons}
         
-        <UserOutput userName = {this.state.username} />
+        {/* <UserOutput userName = {this.state.username} />
         <UserInput userName = {this.usernameChange}/>
         <UserOutput userName = "hanh" />
         <UserOutput userName = "don" />
-        <UserOutput userName = "chao" />
+        <UserOutput userName = "chao" /> */}
       </div>
     );
   }
