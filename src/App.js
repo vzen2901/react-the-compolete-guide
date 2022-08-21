@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 
 import Radium from 'radium';
+import {StyleRoot} from 'radium';
 import Person from './Person/Person';
 // import UserInput from './UserInput/UserInput';
 // import UserOutput from './UserOutput/UserOutput';
@@ -154,27 +155,29 @@ class App extends Component {
 
 
     return (
-      <div className="App">
-        <p className={classes.join(' ')}>This is really working!</p>
-        <button 
-          // onClick={this.switchNameAge.bind(this, 'han')}
-          onClick = {this.togglePersonsHandler}
-          style={style}
-        >Toggle Persons</button>
-        {/* {this.state.showPerson ?  */}
-        {/* <div>{/* ẩn hiện div này */}
-          {/* <Person name = {this.state.persons[0].name} age = {this.state.persons[0].age} switchNameAge = {this.switchNameAge.bind(this, 'newhan')}>Click</Person> */}
-          {/* <Person name = {this.state.persons[1].name} age = {this.state.persons[1].age} nameChange={this.nameChange}></Person> */}
-        {/* </div> */}
-        {/* : null */}
-        {persons}
-        
-        {/* <UserOutput userName = {this.state.username} />
-        <UserInput userName = {this.usernameChange}/>
-        <UserOutput userName = "hanh" />
-        <UserOutput userName = "don" />
-        <UserOutput userName = "chao" /> */}
-      </div>
+      <StyleRoot>
+        <div className="App">
+          <p className={classes.join(' ')}>This is really working!</p>
+          <button 
+            // onClick={this.switchNameAge.bind(this, 'han')}
+            onClick = {this.togglePersonsHandler}
+            style={style}
+          >Toggle Persons</button>
+          {/* {this.state.showPerson ?  */}
+          {/* <div>{/* ẩn hiện div này */}
+            {/* <Person name = {this.state.persons[0].name} age = {this.state.persons[0].age} switchNameAge = {this.switchNameAge.bind(this, 'newhan')}>Click</Person> */}
+            {/* <Person name = {this.state.persons[1].name} age = {this.state.persons[1].age} nameChange={this.nameChange}></Person> */}
+          {/* </div> */}
+          {/* : null */}
+          {persons}
+          
+          {/* <UserOutput userName = {this.state.username} />
+          <UserInput userName = {this.usernameChange}/>
+          <UserOutput userName = "hanh" />
+          <UserOutput userName = "don" />
+          <UserOutput userName = "chao" /> */}
+        </div>
+      </StyleRoot>
     );
   }
 }
