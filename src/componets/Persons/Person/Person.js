@@ -24,10 +24,13 @@
 import React from "react";
 import './Person.css';
 
-const Person = (props) => props.persons.map((person, index) => (
-            <Person name={person.name} 
-                    age={person.age} 
-                    click={() => this.deletePersonsHandler(index)}
-                    key={person.id}
-                    nameChange = {(event)=>this.nameChange(event, person.id)}
-            />))
+const Person = (props) => props.persons.map((person, index) => {  
+    return (
+            <div className="Person" key = {person.id}>
+                <p onClick={() => props.clicked(index)}>i am {person.name} and i am years old {person.age}</p>
+                <input type="text" onChange={(event)=>props.Changed(event, person.id)} defaultValue = {person.name}/>
+            </div>
+    );
+});
+
+export default Person;

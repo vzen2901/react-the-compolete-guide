@@ -197,5 +197,71 @@
 
 import React from "react";
 import './App.css';
-import Person from '../componets/Persons/Person';
+import Person from '../componets/Persons/Person/Person';
+import Cockpit from "../componets/Cockpit/Cockpit";
 
+import {Component} from 'react';
+class App extends Component {
+  state = {
+    persons : [
+      {id: '1', name: 'han', age: 10},
+      {id: '12', name: 'hanh', age: 11},
+      {id: '123', name: 'don', age: 12},
+      {id: '1234', name: 'chao', age: 13}
+    ],
+    username: 'supermax',
+    showPerson: false
+  }
+
+  nameChangeHandler = (event, id) =>{
+    const personIndex = this.state.persons.findIndex((tmp) => {return tmp.id === id});
+    const person = {...this.state.persons[personIndex]}
+
+    person.name = event.target.value;
+    const persons = [...this.state.persons];
+    persons[personIndex] = person;
+
+    this.setState({
+      persons : persons
+    })
+  }
+  usernameChange = (event) => {
+    this.setState({
+      username: event.target.value
+    })
+  }
+
+  deletePersonsHandler = (personIndex) => {
+    const persons = [...this.state.persons];
+    persons.splice(personIndex,1);
+    
+    this.setState({
+      persons: persons
+    })
+  }
+  togglePersonsHandler = () => {
+    const doesShow = this.state.showPerson;
+    this.setState({
+      showPerson: !doesShow
+    })
+  }
+
+
+  render(){
+    let Persons = null;
+    if(this.state.showPerson){
+      Persons = (<Person
+                    persons = {this.state.persons}
+                    clicked = {this.deletePersonsHandler}
+                    Changed = {this.nameChangeHandler}
+                />);
+    }
+    return (
+        <div className="App">
+          <Cockpit onClick = {this.togglePersonsHandler}/>
+          {Persons}
+        </div>
+    );
+  }
+}
+export default App;
