@@ -24,6 +24,10 @@
 import React from "react";
 import './Person.css';
 
-const Person = (props) => {
-    return ();
-};
+const Person = (props) => props.persons.map((person, index) => (
+            <Person name={person.name} 
+                    age={person.age} 
+                    click={() => this.deletePersonsHandler(index)}
+                    key={person.id}
+                    nameChange = {(event)=>this.nameChange(event, person.id)}
+            />))
