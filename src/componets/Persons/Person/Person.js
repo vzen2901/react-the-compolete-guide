@@ -25,6 +25,7 @@ import React from "react";
 import './Person.css';
 
 const Person = (props) => props.persons.map((person, index) => {  
+    console.log("personjs rendering...");
     return (
             <div className="Person" key = {person.id}>
                 <p onClick={() => props.clicked(index)}>i am {person.name} and i am years old {person.age}</p>

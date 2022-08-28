@@ -201,7 +201,14 @@ import Person from '../componets/Persons/Person/Person';
 import Cockpit from "../componets/Cockpit/Cockpit";
 
 import {Component} from 'react';
+
 class App extends Component {
+  constructor(props){
+    super(props);
+    console.log("sppjs contructor");
+    // this.states = 'ss';
+  }
+
   state = {
     persons : [
       {id: '1', name: 'han', age: 10},
@@ -211,6 +218,13 @@ class App extends Component {
     ],
     username: 'supermax',
     showPerson: false
+  }
+  static getDerivedStateFromProps(props, state){
+    console.log("appjs getDriveStateFromProps",props);
+    return state;
+  }
+  componentDidMount(){
+    console.log("appjs componentDidMount");
   }
 
   nameChangeHandler = (event, id) =>{
@@ -248,6 +262,7 @@ class App extends Component {
 
 
   render(){
+    console.log("appjs render");
     let Persons = null;
     if(this.state.showPerson){
       Persons = (<Person
