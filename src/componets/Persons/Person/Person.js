@@ -2,9 +2,15 @@ import React, {Component} from "react";
 import './Person.css';
 
 class Person extends Component {
-    constructor(props){
-        super(props);
+    // constructor(props){
+    //     super(props);
+    // }
+
+
+    componentDidUpdate(prevProps, prevState, snapshot){
+        console.log("personjs componentDidUpdate");
     }
+    //componentDidUpdate() được sử dụng thường xuyên nhất
     render(){
         return this.props.persons.map((person, index) => { 
             return(
