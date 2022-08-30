@@ -4,6 +4,9 @@ const Cockpit = (props) => {
     useEffect(() => {
         console.log("cockpit.js useEffect");
         //http request...
+        setTimeout(() => {
+            alert('saved data to clould');
+        }, 1000);
     });
     return (
         <div>
