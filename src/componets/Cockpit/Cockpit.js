@@ -6,6 +6,9 @@ const Cockpit = (props) => {
         //http request...
         setTimeout(() => {
             alert('saved data to clould');
+        return () => {
+            console.log("cockpitjs cleanup work in useEffect")
+        };
         }, 1000);
     }, [props.persons]);
     return (

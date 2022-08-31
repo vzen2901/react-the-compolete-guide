@@ -11,6 +11,11 @@ class Person extends Component {
         console.log("personjs componentDidUpdate");
     }
     //componentDidUpdate() được sử dụng thường xuyên nhất
+    
+    componentWillUnmount(){
+        console.log("person js componentWillUnmount");
+    };
+    
     render(){
         return this.props.persons.map((person, index) => { 
             return(
