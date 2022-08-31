@@ -7,10 +7,10 @@ const Cockpit = (props) => {
         setTimeout(() => {
             alert('saved data to clould');
         }, 1000);
-    });
+    }, [props.persons]);
     return (
         <div>
-            <p>This is really working!</p>
+            <p>This is  really working!</p>
             <button 
              onClick = {props.onClick}
             >Toggle Persons</button>
