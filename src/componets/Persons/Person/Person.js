@@ -5,7 +5,23 @@ class Person extends Component {
     // constructor(props){
     //     super(props);
     // }
+    static getDerivedStateFromProps(props, state){
+        console.log("personjs getDerivedStateFromProps");
+        return true;
+    }
 
+    componentDidMount(){
+        console.log("personjs componentDidMount");
+      }
+
+    shouldComponentUpdate(nextProps, nextState){
+        console.log("personjs shouldComponentUpdate");
+        return true;
+    }
+    getSnapshotBeforeUpdate(prevProps, prevState){
+        console.log("personjs getSnapshotBeforeUpdate");
+    }
+    
 
     componentDidUpdate(prevProps, prevState, snapshot){
         console.log("personjs componentDidUpdate");
