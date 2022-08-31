@@ -16,7 +16,7 @@ class Person extends Component {
 
     shouldComponentUpdate(nextProps, nextState){
         console.log("personjs shouldComponentUpdate");
-        return true;
+        return true;//hủy cập nhật
     }
     getSnapshotBeforeUpdate(prevProps, prevState){
         console.log("personjs getSnapshotBeforeUpdate");
