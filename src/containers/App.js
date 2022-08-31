@@ -217,7 +217,8 @@ class App extends Component {
       {id: '1234', name: 'chao', age: 13}
     ],
     username: 'supermax',
-    showPerson: false
+    showPerson: false,
+    showCockpit: true
   }
   static getDerivedStateFromProps(props, state){
     console.log("appjs getDriveStateFromProps",props);
@@ -276,8 +277,17 @@ class App extends Component {
     }
     return (
         <div className="App">
-          <Cockpit onClick = {this.togglePersonsHandler}/>
-          {Persons}
+          <button onClick={() => {
+              this.setState({showCockpit: false });
+            }}
+          >remove cockpit</button>
+          {this.state.showCockpit ? <div>
+            <Cockpit 
+              onClick = {this.togglePersonsHandler}
+              persons = {this.state.persons}
+            /> 
+            {Persons} 
+          </div> : null} 
         </div>
     );
   }
