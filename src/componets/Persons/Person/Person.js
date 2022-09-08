@@ -30,6 +30,9 @@ class Person extends Component {
     
     componentWillUnmount(){
         console.log("person js componentWillUnmount");
+
+
+        
     };
     
     render(){
