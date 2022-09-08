@@ -5,10 +5,10 @@ class Person extends Component {
     // constructor(props){
     //     super(props);
     // }
-    static getDerivedStateFromProps(props, state){
-        console.log("personjs getDerivedStateFromProps");
-        return true;
-    }
+    // static getDerivedStateFromProps(props, state){
+    //     console.log("personjs getDerivedStateFromProps");
+    //     return true;
+    // }
 
     componentDidMount(){
         console.log("personjs componentDidMount");
@@ -16,7 +16,12 @@ class Person extends Component {
 
     shouldComponentUpdate(nextProps, nextState){
         console.log("personjs shouldComponentUpdate");
-        return true;//hủy cập nhật
+        if(nextProps.persons !== this.props.persons){
+            return true;// cập nhật
+        }else{
+            return false;//không cập nhật
+        }
+        // return true;// cập nhật
     }
     getSnapshotBeforeUpdate(prevProps, prevState){
         console.log("personjs getSnapshotBeforeUpdate");
@@ -30,9 +35,6 @@ class Person extends Component {
     
     componentWillUnmount(){
         console.log("person js componentWillUnmount");
-
-
-        
     };
     
     render(){
