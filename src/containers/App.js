@@ -218,7 +218,8 @@ class App extends Component {
     ],
     username: 'supermax',
     showPerson: false,
-    showCockpit: true
+    showCockpit: true,
+    changedCounter: 0
   }
   static getDerivedStateFromProps(props, state){
     console.log("appjs getDriveStateFromProps",props);
@@ -239,9 +240,12 @@ class App extends Component {
     const persons = [...this.state.persons];
     persons[personIndex] = person;
 
-    this.setState({
-      persons : persons
-    })
+    this.setState((prevState, props) => {
+      return {
+        persons : persons,
+        changedCounter: prevState.changedCounter + 1 
+      };
+    });
   }
   usernameChange = (event) => {
     this.setState({
