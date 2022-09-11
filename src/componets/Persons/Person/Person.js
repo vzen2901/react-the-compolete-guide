@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import './Person.css';
+import PropTypes from 'prop-types';
 
 class Person extends Component {
     // constructor(props){
@@ -48,5 +49,11 @@ class Person extends Component {
         });
     }
 }
+
+Person.propTypes = {
+    persons: PropTypes.array,
+    clicked: PropTypes.func,
+    Changed: PropTypes.func
+};
 
 export default Person;
